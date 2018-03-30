@@ -1,0 +1,87 @@
+<section id="home">
+  <!-- <div class="container-fluid d-none d-md-block">
+    <div class=row>
+    <ngb-carousel>
+      <ng-template ngbSlide>
+        <img src="assets/img/image1.JPG" alt="first" class="item">
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="assets/img/image2.jpg" alt="second" class="item">
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="assets/img/image3.jpg" alt="fourth" class="item">
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="assets/img/image4.jpg" alt="fifth" class="item">
+      </ng-template>
+    </ngb-carousel></div>
+  </div> -->
+ 
+  <div class="container-fluid p-5">
+    <div class="row">
+    <div class="col-md-3  hidden-sm-up"></div>
+    <div class="col-md-6">
+    <app-message></app-message>
+    <div class="row">
+      <div *ngIf="!products" class="m-auto">
+        <h1 class="text-center display-3 mt-5">
+          <i class="fa fa-spinner fa-spin"></i>
+        </h1>
+      </div>
+      <div *ngFor="let product of products" class="col-md-12 mb-5">
+        <a (click)="open(content)" >
+          <div class="card bg-light">
+            <!-- <img src="{{ product.image }}" alt="product" class="card-img-top"> -->
+            <div class="card-body">
+              <h5 style="padding-left:10px;">{{ product.owner.name }}</h5>
+              <table cellpadding="5px">
+                <tr>
+                  <td style="vertical-align: top">
+                    <img  src="{{ product.owner.picture }}">
+                  </td>
+                  <td>
+                  <h5><i>{{ product.category.name }}</i></h5>
+                  <h5 class="card-title">{{ product.title }}</h5></td>
+                </tr>
+              </table>
+              <p style="padding-left:10px" class="card-title twolines">{{ product.description }}</p>
+            </div>
+          </div>
+          
+        </a>
+        <ng-template #content let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">{{ product.title }}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col-lg-10">
+              <div class="row">
+                <div class="col-6">
+                  <p class="m-0">
+                    <small>by {{ product.owner.name }}</small>
+                  </p>
+                  
+                    <h5 class="text-muted"><i>{{ product.category.name }}</i></h5>
+                  
+                </div>
+                <div class="col-6">
+                </div>
+              </div>
+              <hr>
+              <p class="lead">{{ product.description }}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+          </div>
+        </ng-template>
+      </div>
+      
+    </div></div>
+    <div class="col-md-3  hidden-sm-up"></div>
+  </div>
+  </div>
+</section>

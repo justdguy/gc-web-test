@@ -1,0 +1,40 @@
+<section id="profile">
+  <div class="container p-5">
+    <h4 class="display-5">My Profile</h4>
+    <hr>
+    <div *ngIf="!data.user" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h1>
+    </div>
+    <div *ngIf="data.user" class="row mt-5">
+      <div class="col-md-2">
+        <img [src]="data.user.picture" alt="userimage" class="rounded-circle image">
+      </div>
+      <div class="col-md-8 ml-3">
+        <p id="name" class="lead">{{ data.user.name }}</p>
+        <a routerLink="/profile/orders" class="btn btn-outline-info btn-block">My Likes</a>
+        <br>
+        <br>
+        <a routerLink="/profile/settings" class="btn btn-outline-info btn-block">Change Account Settings</a>
+        <br>
+        <br>
+        <a routerLink="/profile/address" class="btn btn-outline-info btn-block">Change Address</a>
+        <br>
+        <br>
+        <div *ngIf="data.user.isCardinalEmployee">
+          
+          <hr>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <a routerLink="/profile/postidea" class="btn btn-outline-success btn-block">Post an Idea</a>
+            </div>
+            <div class="col-md-6">
+              <a routerLink="/profile/ideas" class="btn btn-outline-success btn-block">My Posts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
