@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
-import { RestApiService } from '../rest-api.service';
+import { RestApiService, apiBase } from '../rest-api.service';
 
 @Component({
   selector: 'app-product',
@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(res => {
       this.rest
-        .get(`http://localhost:3030/api/idea/${res['id']}`)
+        .get(`${apiBase}/api/idea/${res['id']}`)
         .then(data => {
           data['success']
             ? (this.product = data['product'])

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../data.service';
-import { RestApiService } from '../rest-api.service';
+import { RestApiService, apiBase } from '../rest-api.service';
 
 @Component({
   selector: 'app-settings',
@@ -72,7 +72,7 @@ export class SettingsComponent implements OnInit {
     try {
       if (this.validate(this.currentSettings)) {
         const data = await this.rest.post(
-          'http://localhost:3030/api/accounts/profile',
+          apiBase + '/api/accounts/profile',
           {
             name: this.currentSettings['name'],
             email: this.currentSettings['email'],

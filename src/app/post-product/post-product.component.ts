@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { RestApiService } from '../rest-api.service';
+import { RestApiService, apiBase } from '../rest-api.service';
 import { DataService } from '../data.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class PostProductComponent implements OnInit {
   async ngOnInit() {
     try {
       const data = await this.rest.get(
-        'http://localhost:3030/api/categories'
+        apiBase + '/api/categories'
       );
       data['success']
         ? (this.categories = data['categories'])
@@ -79,7 +79,7 @@ export class PostProductComponent implements OnInit {
           }
         }
         const data = await this.rest.post(
-          'http://localhost:3030/api/postidea/ideas',
+          apiBase + '/api/postidea/ideas',
           form
         );
         data['success']

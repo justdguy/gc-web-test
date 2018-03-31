@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { RestApiService } from '../rest-api.service';
+import { RestApiService, apiBase } from '../rest-api.service';
 import { DataService } from '../data.service';
 
 @Component({
@@ -41,7 +41,7 @@ export class CategoryComponent implements OnInit {
     }
     try {
       const data = await this.rest.get(
-        `http://localhost:3030/api/categories/${this.categoryId}?page=${this
+        `${apiBase}/api/categories/${this.categoryId}?page=${this
           .page - 1}`,
       );
       data['success']

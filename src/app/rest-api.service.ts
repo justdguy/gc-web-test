@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+export const apiBase = "https://cardinal-test-199422.appspot.com"
+
 @Injectable()
 export class RestApiService {
 

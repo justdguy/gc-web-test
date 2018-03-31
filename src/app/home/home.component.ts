@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { RestApiService } from '../rest-api.service';
+import { RestApiService, apiBase } from '../rest-api.service';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const data = await this.rest.get('http://localhost:3030/api/ideas');
+      const data = await this.rest.get(apiBase + '/api/ideas');
       data['success']
         ? (this.products = data['products'])
         : this.data.error('Could not fetch products.');
